@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block css %}index.css{% endblock %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+
+{% for button in buttons %} 
+
+    <button><a href="/{{ button }}/">{{ button }}</a></button>
+
+{% endfor %}
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block css %}semesters.css{% endblock %}
+
+{% block title %}Semesters{% endblock %}
+
+{% block content %}
+
+    <form method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form>
+
+    {% for semester in object_list  %}
+        <div class="material__card"> 
+            <h3>{{ semester.title }}</h3>
+            <p>{{ semester.description }}</p>
+            <p>{{ semester.semester_number }}</p>
+            <button><a href="{% url 'course_list' semester_num=semester.semester_number %}">Go!</a></button>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block css %}materials.css{% endblock %}
+
+{% block title %}Materials{% endblock %}
+
+{% block content %}
+
+    {% comment %} <form action="{% url 'search_results' %}" method="get">
+        <input name="q" type="text" placeholder="Search...">
+    </form> {% endcomment %}
+
+    {% for material in object_list %}
+        <div class="material__card"> 
+            <h3>{{ material.title }}</h3>
+            <p>{{ material.description }}</p>
+            <p>{{ material.upload }}</p>
+
+            {% comment %} <embed src="{% url 'pdf' pdf_name=material.upload.url %}" type="application/pdf" height="700px" width="500"> {% endcomment %}
+            <embed src="..{{ material.upload.url }}" type="application/pdf" height="700px" width="500">
+            <button><a href="/{{ material.upload }}">Go!</a></button>
+        </div>
+    {% endfor %}
+
+{% endblock %}

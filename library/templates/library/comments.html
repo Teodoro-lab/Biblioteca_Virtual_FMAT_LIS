@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block css %}comentarios.css{% endblock %}
+
+{% block title %}Comentarios{% endblock %}
+
+{% block content %}
+    <h1>Comentarios y Sugerencias</h1>
+    <p>Para nosotros tu opinión es muy importante</p>
+    <p>¡Gracias por ayudarnos a mejorar!</p>
+
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
