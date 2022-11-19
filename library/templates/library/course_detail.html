@@ -11,4 +11,8 @@
             <p>{{ object.description }}</p>   
         </div>
 
+        <button><a href="{{ request.get_full_path }}/materials"> materials </a></button>
+        <button><a href="{{ request.get_full_path }}/exercises"> exercises </a></button>
+        <button><a href="{{ request.get_full_path }}/resources"> resources </a></button>
+
 {% endblock %}

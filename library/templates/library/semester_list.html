@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "authRequiredBase.html" %}
 
 {% block css %}semesters.css{% endblock %}
 
 {% block title %}Semesters{% endblock %}
 
-{% block content %}
+{% block content_auth %}
 
     <form method="get">
         <input name="q" type="text" placeholder="Search...">

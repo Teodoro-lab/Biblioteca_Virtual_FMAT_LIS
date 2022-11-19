@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block css %}index.css{% endblock %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% block content_auth %}
+            Hi {{ user.username }}!
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+        {% endblock %}		
+    {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'login' %}">Log In</a>
+    {% endif %}
+{% endblock %}

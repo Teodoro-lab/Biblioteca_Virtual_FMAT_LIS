@@ -30,15 +30,20 @@
 			{% block sidebar %}
 			<ul>
 				<li><a href="/">inicio</a></li>
-				<li><a href="/comments">comentarios</a></li>
+				<li><a href="{% url 'semester_list' %}">semesters</a></li>
+				<li><a href="{% url 'comment_form' %}">comentarios</a></li>
 				<li><a href="/registro">registro</a></li>
-				<li><a href="/log-in">log-in</a></li>
+				<li><a href="{% url 'login' %}">log-in</a></li>
+				<li><a href="{% url 'logout' %}">log-out</a></li>
 				<li><a href="/otros">otros</a></li>
 				<li><a href="/Contacto">Contacto</a></li>
 			</ul>
 			{% endblock %}
 		</div>
 
-		<div id="content">{% block content %}{% endblock %}</div>
+			
+
+		<div id="content">{% block content %}
+		{% endblock %}</div>
 	</body>
 </html>

@@ -35,7 +35,7 @@ class Material(models.Model):
     date_publisehd = models.DateTimeField('date published')
     title = models.CharField(max_length=120)
     description = models.TextField()
-    upload = models.FileField(upload_to='uploads/', default=None)
+    upload = models.FileField(default=None)
 
     def __str__(self):
         return self.title

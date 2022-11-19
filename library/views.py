@@ -8,12 +8,7 @@ from .models import Course, Material, Semester
 
 
 def index_view(request):
-    buttons = {
-        "buttons": ["materials",
-                    "examples",
-                    "resources"]
-    }
-    return render(request, 'library/index.html', buttons)
+    return render(request, 'library/index.html')
 
 #-------------- Comments -------------
 
@@ -61,7 +56,8 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
     
-#
+#-------------- pdf -------------
+
 def pdf_view(request, pdf_path):
     try:
         return FileResponse(open(pdf_path, 'rb'), content_type='application/pdf')
