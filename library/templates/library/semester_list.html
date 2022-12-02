@@ -1,22 +1,62 @@
 {% extends "authRequiredBase.html" %}
 
-{% block css %}semesters.css{% endblock %}
+{% load static %}
+
+{% block css %}blackPage.css{% endblock %}
 
 {% block title %}Semesters{% endblock %}
 
 {% block content_auth %}
 
-    <form method="get">
+    <!-- <form method="get">
         <input name="q" type="text" placeholder="Search...">
-    </form>
+    </form> -->
 
-    {% for semester in object_list  %}
-        <div class="material__card"> 
-            <h3>{{ semester.title }}</h3>
-            <p>{{ semester.description }}</p>
-            <p>{{ semester.semester_number }}</p>
-            <button><a href="{% url 'course_list' semester_num=semester.semester_number %}">Go!</a></button>
+    <div class="grid-layout-S">
+    
+        <div class="item1-S">
+            <img id="icono" alt="Image 1" src="{% static 'iconos/' %}tasa.jpeg" align="left" />
+    
+            <div class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="comentarios.html">Comentarios</a>
+                <a href="#news">Registro</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Otros
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="materias.html">Materias</a>
+                        <a href="Ejercicios.html">Ejercicios</a>
+                        <a href="Recursos.html">Recursos</a>
+                    </div>
+                </div>
+                <a href="contacto.html">Contacto</a>
+            </div>
         </div>
-    {% endfor %}
+    
+        <div class="item2-S">
+            <p id="titulo" align="center"> Semestres</p>
+    
+            <div class="grid-main-S">
+
+                {% for semester in object_list %}
+                <div class="semestre{{ semester.semester_number }}">
+                    <p><a class="link-azul" href="{% url 'course_list' semester_num=semester.semester_number %}">semestre {{ semester.semester_number }}</a></p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    
+        <div class="item3-S">
+            <p class="menuBotBlanco">&lt; <a href="Catalogo.html">Materias</a> | | <a href="Personal.html">Ejercicios</a> |
+                | <a href="Comentarios.html">Recursos</a> &gt;</p>
+            </p>
+        </div>
+    </div>
+
+
+    
 
 {% endblock %}

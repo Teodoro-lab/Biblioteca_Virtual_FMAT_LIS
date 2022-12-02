@@ -1,20 +1,59 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block css %}semesters.css{% endblock %}
 
 {% block title %}Semesters{% endblock %}
 
 {% block content %}
 
-    <form method="get">
+    <!-- <form method="get">
         <input name="q" type="text" placeholder="Search...">
-    </form>
+    </form> -->
 
-    {% for course in object_list  %}
-        <div class="material__card"> 
-            <h3>{{ course.name }}</h3>
-            <button><a href="{{ course.get_absolute_url }}">Go!</a></button>
+
+    <div class="grid-layout-M">
+    
+        <div class="item1-M">
+            <img id="icono" alt="Image 1" src="{% static 'iconos/' %}tasa.jpeg" align="left" />
+    
+            <div class="navbar" align="right">
+                <a href="index.html">Inicio</a>
+                <a href="comentarios.html">Comentarios</a>
+                <a href="registro.html">Registro</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Otros
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="mockup2.html">Materias</a>
+                        <a href="mockup5.html">Ejercicios</a>
+                        <a href="mockup6.html">Recursos</a>
+                    </div>
+                </div>
+                <a href="contacto.html">Contacto</a>
+            </div>
         </div>
-    {% endfor %}
+    
+        <div class="item2-M">
+            <p id="titulo" align="center"> Materias</p>
+            <p id="subtitulo" align="center"> Semestre 5</p>
+    
+            <div class="grid-main-M">
+
+                {% for course in object_list %}
+                     <div class="materia{{ forloop.counter }}"><a href="{{ course.get_absolute_url }}" class="link-azul">{{ course.name }}</a></div>
+                {% endfor %}
+
+            </div>
+        </div>
+    
+        <div class="item3-M">
+            <p class="menuBotNegro">&lt; <a href="mockup2.html">Materias</a> | | <a href="mockup5.html">Ejercicios</a> | |
+                <a href="mockup6.html">Recursos</a> &gt;</p>
+            </p>
+        </div>
+    </div>
 
 {% endblock %}

@@ -43,6 +43,9 @@ class Material(models.Model):
 
 class Comment(models.Model):
     email = models.EmailField()
-    name = models.CharField(max_length=120)
     comment = models.TextField()
+
+    def save(self):
+        print("Saving comment")
+        return super().save()
     

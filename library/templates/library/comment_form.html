@@ -1,18 +1,40 @@
 {% extends "base.html" %}
 
-{% block css %}comentarios.css{% endblock %}
+{% load static %}
+
+{% block css %}blackPage.css{% endblock %}
 
 {% block title %}Comentarios{% endblock %}
 
 {% block content %}
-    <h1>Comentarios y Sugerencias</h1>
-    <p>Para nosotros tu opinión es muy importante</p>
-    <p>¡Gracias por ayudarnos a mejorar!</p>
-
-
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Submit">
-    </form>
+    <div class="grid-layout-CC">
+        <div class="item1-CC">
+            <img id="icono" alt="Image 1" style="width: 80px;" src="{% static 'iconos/' %}microwave.png" align="left" />
+    
+            <div class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </div>
+    
+        <div class="item2-CC">
+            <p class="titulo">Biblioteca <m style="color:#4FCFFF;">Virtual</m>
+            </p>
+        </div>
+    
+        <div class="item3-CC">
+            <div class="texto">
+                <p style="text-align: center;">Comentarios y sugerencias</p>
+                <p style="text-align: center;">Para nosotros tu opinión es muy importante</p>
+                <p style="text-align: center;">¡Gracias por ayudarnos a mejorar!</p>
+            </div>
+    
+            <form method="POST" action="">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit" class="button">
+            </form>
+        </div>
+    </div>
+    
 {% endblock %}

@@ -5,6 +5,7 @@ from .views import (
     SemesterListView,
     CommentFormView,
     MaterialListView,
+    ContactTemplateView,
     index_view, pdf_view
 )
 
@@ -33,6 +34,8 @@ urlpatterns = [
 
     path("comments/",
          CommentFormView.as_view(), name="comment_form"),
+
+     path("contact/", ContactTemplateView.as_view(), name="contact"),
 
     path('pdf/<str:pdf_name>', pdf_view, name='pdf')
 
