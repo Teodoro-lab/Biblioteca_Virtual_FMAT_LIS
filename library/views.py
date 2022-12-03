@@ -60,6 +60,7 @@ class CourseListView(ListView):
     def get_queryset(self):
         return Course.objects.filter(semester=self.kwargs['semester_num'])
 
+
 class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
