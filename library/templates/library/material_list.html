@@ -1,7 +1,9 @@
 
 {% extends "base.html" %}
 
-{% block css %}materials.css{% endblock %}
+{% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/materials.css' %}">
+{% endblock %}
 
 {% block title %}Materials{% endblock %}
 

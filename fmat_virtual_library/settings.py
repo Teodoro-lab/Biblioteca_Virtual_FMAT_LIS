@@ -11,8 +11,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 import os
-from dotenv import dotenv_values
 from pathlib import Path
+
+from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +39,15 @@ LOGOUT_REDIRECT_URL = "/"
 
 # Application definition
 
+LOCAL_APPS = [
+    "library.apps.LibraryConfig",
+    #"RestLibrary.apps.RestlibraryConfig",
+]
+
+THIRD_PARTY_APPS = [
+    "rest_framework",
+]
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -45,8 +55,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "library.apps.LibraryConfig",
-]
+] + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

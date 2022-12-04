@@ -1,14 +1,79 @@
 {% extends "base.html" %}
 
-{% block css %}materials.css{% endblock %}
+{% load static %}
 
-{% block title %} {{material.title}} {% endblock %}
+<!-- {% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/estilosGeneral.css' %}">
+{% endblock %} -->
+
+{% block jsfiles %}
+    <script src="https://kit.fontawesome.com/b9de68eef5.js" crossorigin="anonymous"></script> <!--verificar que esté bien el formato para este js-->
+    <script language="javascript" type="module" src="{% static 'js/apiDiccionario.js' %}"></script>
+{% endblock %}
+
+{% block title %} {{ course.title }} {% endblock %}
 
 {% block content %}
 
-        <div class="material__card"> 
-            <h3>{{ material.title }}</h3>
-            <p>{{ material.description }}</p>   
-        </div>
+        <div class="grid-layout-U">
+
+            <div class="item1-U">
+              <img id="icono" alt="Image 1" src="iconos\tasa.jpeg" align="left"/>
+        
+              <div class="navbar">
+                <a href="index.html">Inicio</a>
+                <a href="comentarios.html">Comentarios</a>
+                <a href="#news">Iniciar Sesión</a>
+                <div class="dropdown">
+                  <button class="dropbtn">Otros 
+                  </button>
+                  <div class="dropdown-content">
+                    <a href="materias.html">Materias</a> 
+                    <a href="Ejercicios.html">Ejercicios</a>
+                    <a href="Recursos.html">Recursos</a>
+                  </div>
+                </div>
+                <a href="contacto.html">Contacto</a>
+              </div>
+            </div>
+        
+            <div class="item2-U">
+              <p id="titulo" align="center">{{ course.title }} </p>
+              <p id="subtitulo"> {{ material.title }}</p> 
+        
+              <div class="contenido-U">
+                <p>{{ material.description }}</p>
+                </div>
+        
+            </div>
+        
+            <div class="item3-U">
+                    <div class="grid-bottom-U">
+        
+                        <div class="bot1">
+                            <button class="adobe-pdf-download">
+                                <table>
+                                    <tr>
+                                    <td><img src="iconos\pdf1.png"></td>
+                                    <td><p><a href="#">Recursos</a></p></td>
+                                    </tr>
+                                </table>
+                            </button>
+                        </div>
+        
+                        <div class="bot2">
+                            <button class="ejercicios-pdf-download">
+                                <table>
+                                    <tr>
+                                    <td><img src="iconos\ejercicios1.png"></td>
+                                    <td><p><a href="ejercicios.html">Ejercicios</a></p></td>
+                                    </tr>
+                                </table>
+                            </button>
+        
+                        </div>
+                    </div>
+            </div>  
+          </div>
 
 {% endblock %}

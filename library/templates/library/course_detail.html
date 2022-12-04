@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{% block css %}materials.css{% endblock %}
+{% load static %}
+
+{% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/materials.css' %}">
+{% endblock %}
 
 {% block title %} {{object.title}} {% endblock %}
 

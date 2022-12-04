@@ -12,9 +12,9 @@ def index_view(request):
 
 
 #-------------- utils -------------
-
 class ContactTemplateView(TemplateView):
     template_name = 'library/contact.html'
+
 
 class CommentFormView(FormView):
     template_name = 'library/comment_form.html'
@@ -65,13 +65,3 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
 
-
-#-------------- pdf -------------
-
-
-def pdf_view(request, pdf_path):
-    try:
-        return FileResponse(open(pdf_path, 'rb'),
-                            content_type='application/pdf')
-    except FileNotFoundError:
-        raise Http404('not found')

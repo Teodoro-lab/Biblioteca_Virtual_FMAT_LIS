@@ -1,17 +1,41 @@
 {% extends "base.html" %}
 
-{% block css %}index.css{% endblock %}
+{% load static %}
+
+{% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/authentication.css' %}">
+{% endblock %}
 
 {% block title %}My amazing blog{% endblock %}
 
 {% block content %}
+
     {% if user.is_authenticated %}
         {% block content_auth %}
-            Hi {{ user.username }}!
-            <p><a href="{% url 'logout' %}">Log Out</a></p>
+            Hola {{ user.username }}!
+            <p><a  href="{% url 'logout' %}">Log Out</a></p>
         {% endblock %}		
     {% else %}
-            <p>You are not logged in</p>
-            <a href="{% url 'login' %}">Log In</a>
+    <div class="grid-layout-I">
+
+            <div class="item1-CC">
+                <img id="icono" alt="Image 1" style="width: 80px;" src="{% static 'iconos/' %}microwave.png" align="left" />
+            
+                <div class="navbar">
+                    <a href="index.html">Inicio</a>
+                    <a href="contacto.html">Contacto</a>
+                </div>
+            </div>
+            
+            <div class="item2-CC">
+                <p class="titulo">¡ Bienvenid@ !</p>
+            </div>
+
+            <div>
+                <p>You are not logged in</p>
+                <a href="{% url 'login' %}">Log In</a>
+            </div>
+    </div>
     {% endif %}
+    
 {% endblock %}

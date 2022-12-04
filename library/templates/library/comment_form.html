@@ -2,7 +2,9 @@
 
 {% load static %}
 
-{% block css %}blackPage.css{% endblock %}
+{% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/estilosGeneral.css' %}">
+{% endblock %}
 
 {% block title %}Comentarios{% endblock %}
 

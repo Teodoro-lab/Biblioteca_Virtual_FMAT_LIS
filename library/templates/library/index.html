@@ -2,7 +2,13 @@
 
 {% load static %}
 
-{% block css %}blackPage.css{% endblock %}
+{% block cssfiles %} 
+    <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
+{% endblock %}
+
+{% block jsfiles %}
+    <script language="javascript" type="module" src="{% static 'js/ajax.js' %}"></script>
+{% endblock %}
 
 {% block title %}Biblioteca Ing. Software{% endblock %}
 
@@ -38,6 +44,9 @@
                     <p><a href="{% url 'contact' %}" class="link-negro">Contacto</a></p>
                 </div>
             </div>
+
+            <div id="fun-fact"></div>
+
         </div>
     </div>
 

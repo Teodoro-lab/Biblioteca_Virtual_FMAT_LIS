@@ -6,7 +6,7 @@ from .views import (
     CommentFormView,
     MaterialListView,
     ContactTemplateView,
-    index_view, pdf_view
+    index_view
 )
 
 
@@ -37,6 +37,6 @@ urlpatterns = [
 
      path("contact/", ContactTemplateView.as_view(), name="contact"),
 
-    path('pdf/<str:pdf_name>', pdf_view, name='pdf')
+    #path('pdf/<str:pdf_name>', pdf_view, name='pdf')
 
 ] + auth_urls + semester_urls
