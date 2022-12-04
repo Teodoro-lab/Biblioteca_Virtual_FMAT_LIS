@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block cssfiles %} 
-    <link rel="stylesheet" href="{% static 'css/estilosGeneral.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
 {% endblock %}
 
 {% block title %}Comentarios{% endblock %}
@@ -13,10 +13,7 @@
         <div class="item1-CC">
             <img id="icono" alt="Image 1" style="width: 80px;" src="{% static 'iconos/' %}microwave.png" align="left" />
     
-            <div class="navbar">
-                <a href="index.html">Inicio</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
+            {% include "navbar.html" %}
         </div>
     
         <div class="item2-CC">

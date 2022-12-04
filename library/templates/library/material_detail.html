@@ -2,10 +2,6 @@
 
 {% load static %}
 
-<!-- {% block cssfiles %} 
-    <link rel="stylesheet" href="{% static 'css/estilosGeneral.css' %}">
-{% endblock %} -->
-
 {% block jsfiles %}
     <script src="https://kit.fontawesome.com/b9de68eef5.js" crossorigin="anonymous"></script> <!--verificar que esté bien el formato para este js-->
     <script language="javascript" type="module" src="{% static 'js/apiDiccionario.js' %}"></script>
@@ -18,23 +14,9 @@
         <div class="grid-layout-U">
 
             <div class="item1-U">
-              <img id="icono" alt="Image 1" src="iconos\tasa.jpeg" align="left"/>
+              <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left"/>
         
-              <div class="navbar">
-                <a href="index.html">Inicio</a>
-                <a href="comentarios.html">Comentarios</a>
-                <a href="#news">Iniciar Sesión</a>
-                <div class="dropdown">
-                  <button class="dropbtn">Otros 
-                  </button>
-                  <div class="dropdown-content">
-                    <a href="materias.html">Materias</a> 
-                    <a href="Ejercicios.html">Ejercicios</a>
-                    <a href="Recursos.html">Recursos</a>
-                  </div>
-                </div>
-                <a href="contacto.html">Contacto</a>
-              </div>
+              {% include "navbar.html" %}
             </div>
         
             <div class="item2-U">
@@ -54,7 +36,7 @@
                             <button class="adobe-pdf-download">
                                 <table>
                                     <tr>
-                                    <td><img src="iconos\pdf1.png"></td>
+                                    <td><img src="{% static 'iconos\pdf1.png' %}"></td>
                                     <td><p><a href="#">Recursos</a></p></td>
                                     </tr>
                                 </table>
@@ -65,7 +47,7 @@
                             <button class="ejercicios-pdf-download">
                                 <table>
                                     <tr>
-                                    <td><img src="iconos\ejercicios1.png"></td>
+                                    <td><img src="{% static 'iconos\ejercicios1.png' %}"></td>
                                     <td><p><a href="ejercicios.html">Ejercicios</a></p></td>
                                     </tr>
                                 </table>

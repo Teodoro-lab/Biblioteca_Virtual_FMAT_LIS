@@ -5,6 +5,7 @@ from .views import (
     SemesterListView,
     CommentFormView,
     MaterialListView,
+    MaterialDetailView,
     ContactTemplateView,
     index_view
 )
@@ -22,11 +23,9 @@ semester_urls = [
 
     path("semesters/<int:semester_num>/courses/<slug:slug>/materials",
          MaterialListView.as_view(), name="material_list"),
-]
-
-auth_urls = [
-    path("registration/",
-         SemesterListView.as_view(), name="semester_list"),
+     
+    path("semesters/<int:semester_num>/courses/<slug:slug>/materials/<int:material_id>",
+           MaterialDetailView.as_view(), name="material_detail"),
 ]
 
 urlpatterns = [
@@ -39,4 +38,4 @@ urlpatterns = [
 
     #path('pdf/<str:pdf_name>', pdf_view, name='pdf')
 
-] + auth_urls + semester_urls
+] + semester_urls

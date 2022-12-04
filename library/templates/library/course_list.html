@@ -20,22 +20,7 @@
         <div class="item1-M">
             <img id="icono" alt="Image 1" src="{% static 'iconos/' %}tasa.jpeg" align="left" />
     
-            <div class="navbar" align="right">
-                <a href="index.html">Inicio</a>
-                <a href="comentarios.html">Comentarios</a>
-                <a href="registro.html">Registro</a>
-                <div class="dropdown">
-                    <button class="dropbtn">Otros
-                        <i class="fa fa-caret-down"></i>
-                    </button>
-                    <div class="dropdown-content">
-                        <a href="mockup2.html">Materias</a>
-                        <a href="mockup5.html">Ejercicios</a>
-                        <a href="mockup6.html">Recursos</a>
-                    </div>
-                </div>
-                <a href="contacto.html">Contacto</a>
-            </div>
+            {% include "navbar.html" %}
         </div>
     
         <div class="item2-M">

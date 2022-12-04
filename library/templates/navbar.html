@@ -1,0 +1,23 @@
+<div class="navbar">
+    <a href="{% url 'home' %}">Inicio</a>
+    <a href="{% url 'comment_form' %}">Comentarios</a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">log-out</a>
+    {% else %}
+        <a href="{% url 'login' %}">log-in</a>
+        <a href="{% url 'register' %}">register</a>
+    {% endif %}
+
+    <div class="dropdown">
+        <button class="dropbtn">Otros
+        </button>
+        <div class="dropdown-content">
+            <a href="materias.html">Materias</a>
+            <a href="Ejercicios.html">Ejercicios</a>
+            <a href="Recursos.html">Recursos</a>
+        </div>
+    </div>
+
+    <a href="{% url 'contact' %}">Contacto</a>
+</div>

@@ -2,32 +2,37 @@
 
 {% load static %}
 
+
 {% block cssfiles %} 
     <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
 {% endblock %}
+
 
 {% block jsfiles %}
     <script language="javascript" type="module" src="{% static 'js/ajax.js' %}"></script>
 {% endblock %}
 
+
 {% block title %}Biblioteca Ing. Software{% endblock %}
 
 {% block content %}
 
-    <div class="grid-layout-I">
+
+
+<div class="grid-layout-I">
     
         <div class="item1-I">
-            <img id="icono" alt="Image 1" src="{% static 'iconos/' %}microwave.png" align="left" />
-    
-            <div class="navbar">
-                <a href="#news">Registro</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
+            <img id="icono" alt="Image 1" src="{% static 'iconos/microwave.png' %}" align="left" />
+            
+            {% include "navbar.html" %}
         </div>
-    
+        
         <div class="item2-I">
             <p class="titulo">Biblioteca <m style="color:#4FCFFF;">Virtual</m>
             </p>
+            {% if user.is_authenticated %}
+                <p>Bievenidx {{ user.username }}!</p>                
+            {% endif %}
         </div>
     
         <div class="item3-I">

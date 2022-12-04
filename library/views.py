@@ -65,3 +65,11 @@ class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
 
+
+class MaterialDetailView(DetailView):
+    model = Material
+    template_name = "library/material_detail.html"
+
+    def get_object(self):
+        material = Material.objects.filter(id=self.kwargs['material_id']).first()
+        return material

@@ -37,11 +37,14 @@ MEDIA_URL = "/uploads/"
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
 # Application definition
 
 LOCAL_APPS = [
     "library.apps.LibraryConfig",
-    #"RestLibrary.apps.RestlibraryConfig",
+    "RestLibrary.apps.RestlibraryConfig",
+    "accounts.apps.AccountsConfig",
 ]
 
 THIRD_PARTY_APPS = [
