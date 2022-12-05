@@ -480,6 +480,7 @@ body {
 
 /**INDEX*/
 .item1-I { grid-area: header; }
+.item0-I {grid-area: sideBar;}
 .item2-I { grid-area: main; }
 .item3-I { grid-area: footer; }   
 
@@ -490,14 +491,16 @@ body {
 .grid-layout-I {
     display: grid;
     grid-template-areas:
-        'header'
-        'main'
-        'footer';
+        'header header'
+        'main main'
+        'sideBar footer';
     gap: 10px;
-    background-color: #000000; /*FONDO DEL GRID*/
+    background-color: #000000; 
     padding: 10px;
     grid-template-rows: 70px 50px  550;
+    grid-template-columns: 0;
 }
+
 
 .grid-layout-I > div {
     background-color: #000000;
@@ -521,6 +524,7 @@ body {
     padding: 0px;
 }
 
+
 .grid-main-I > div {
     text-align: center;
     padding: 5px 5px;
@@ -531,6 +535,7 @@ body {
 /**INDEX*/
 
 /**MATERIAS*/
+.item0-M { grid-area: sideBar; }
 .item1-M { grid-area: header; }
 .item2-M { grid-area: main; }
 .item3-M { grid-area: footer; background-color: #18976f;}
@@ -545,12 +550,13 @@ body {
     display: grid;
     grid-template-areas:
         'header header '
-        'main main'
+        'sideBar main'
         'footer footer';
     gap: 10px;
     background-color: #ffffff; /*FONDO DEL GRID*/
     padding: 10px;
     grid-template-rows: 70px 550px  30px;
+    grid-template-columns: 0;
 }
 
 .grid-layout-M > div {
@@ -583,6 +589,7 @@ body {
 /**MATERIAS*/
 
 /**SEMESTRES*/
+.item0-S { grid-area: sideBar;}
 .item1-S { grid-area: header; }
 .item2-S { grid-area: main; }
 .item3-S { grid-area: footer; }
@@ -597,16 +604,18 @@ body {
 .semestre8 { grid-area: semestre8;}
 .semestre9 { grid-area: semestre9;}
 
+
 .grid-layout-S {
     display: grid;
     grid-template-areas:
-        'header'
-        'main'
-        'footer';
+        'header header'
+        'sideBar main'
+        'footer footer';
     gap: 10px;
     background-color: #000000; /*FONDO DEL GRID*/
     padding: 10px;
-    grid-template-rows: 70px 620px  80px;
+    grid-template-rows: 70px 620px  50px;
+    grid-template-columns: 0;
 }
 
 .grid-layout-S > div {
@@ -690,6 +699,7 @@ border: 2px;
 /**UNIDAD*/
 
 /**UNIDADES*/
+.item0-US { grid-area: sideBar;}
 .item1-US { grid-area: header; }
 .item2-US { grid-area: main; }
 .item3-US { grid-area: footer; background-color: #18976f;}
@@ -704,12 +714,13 @@ border: 2px;
     display: grid;
     grid-template-areas:
         'header header '
-        'main main'
+        'sideBar main'
         'footer footer';
     gap: 10px;
     background-color: #ffffff; /*FONDO DEL GRID*/
     padding: 10px;
-    grid-template-rows: 70px 550px  30px;
+    grid-template-rows: 70px 600px  30px;
+    grid-template-columns: 0;
 }
 
 .grid-layout-US > div {
@@ -728,7 +739,7 @@ border: 2px;
     justify-content: center;
     grid-template-columns: 150px 150px; /*Make the grid smaller than the container*/
     gap: 20px;
-    column-gap: 70px;
+    column-gap: 0px;
     background-color: #ffffff; /*FONDO DEL GRID*/
     padding: 10px;
 }
@@ -743,9 +754,10 @@ border: 2px;
 /**UNIDADES*/
 
 /**UNIDAD RECURSOS*/
+.item0-UR { grid-area: sideBar;}
 .item1-UR { grid-area: header; }
 .item2-UR { grid-area: main; }
-.item3-UR { grid-area: footer; background-color: #18976f;}
+.item3-UR { grid-area: footer;}
 
 .clase1 { grid-area: clase1; }
 .clase2 { grid-area: clase2; }
@@ -754,12 +766,13 @@ border: 2px;
     display: grid;
     grid-template-areas:
         'header header '
-        'main main'
+        'sideBar main'
         'footer footer';
     gap: 10px;
     background-color: #ffffff; /*FONDO DEL GRID*/
     padding: 10px;
     grid-template-rows: 70px 550px  70px;
+    grid-template-columns: 0;
 }
 
 .grid-layout-UR > div {
@@ -789,7 +802,3 @@ border-radius:5%;
 border: 2px;
 }
 /**UNIDAD RECURSOS*/
-
-
-
-/*PARA EL LOGIN*/

@@ -9,6 +9,9 @@
         <a href="{% url 'register' %}">register</a>
     {% endif %}
 
+
+
+    {% if 'materials' in request.path or 'resources' in request.path or 'exercises' in request.path %}
     <div class="dropdown">
         <button class="dropbtn">Otros
         </button>
@@ -18,6 +21,8 @@
             <a href="Recursos.html">Recursos</a>
         </div>
     </div>
+    {% endif %}
+
 
     <a href="{% url 'contact' %}">Contacto</a>
 </div>

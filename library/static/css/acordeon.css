@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,400i,700");
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+
+div.c{
+    position: relative;
+  margin:2em;
+  margin-right: 0px;
+}
+
+input{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    opacity:0;
+    visibility: 0;
+}
+
+h1{
+    background:#4FCFFF;
+    color:white;
+    padding:25px;
+    position: relative;
+    font-size: 25px;
+}
+
+h2{
+    background:rgb(40, 224, 166);
+    color:white;
+    padding:25px;
+    position: relative;
+    font-size: 25px;
+}
+
+label::before{
+    content:"";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-left:10px solid white;
+}
+label{
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+div.p{
+  max-height:0px;
+  overflow: hidden;
+  transition:max-height 0.5s;
+  background-color: white;
+  box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+div.p p {
+  padding:10px;
+  font-size: 25px;
+}
+
+input:checked ~ h1 label::before{
+  border-left:10px solid transparent;
+  border-top:10px solid white;
+  margin-top:12px;
+  margin-right:10px;
+}
+
+input:checked ~ h1 ~div.p{
+  max-height:1000px;
+}
+
+input:checked ~ h2 label::before{
+    border-left:10px solid transparent;
+    border-top:10px solid white;
+    margin-top:12px;
+    margin-right:10px;
+  }
+  
+  input:checked ~ h2 ~div.p{
+    max-height:1000px;
+  }
+
+a{
+  color:steelblue;
+}

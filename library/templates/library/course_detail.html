@@ -2,21 +2,78 @@
 
 {% load static %}
 
-{% block cssfiles %} 
-    <link rel="stylesheet" href="{% static 'css/materials.css' %}">
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/acordeon.css' %}" />
+
+    <style>
+        body {
+            background-color: white;
+        }
+    
+        .item2-US {
+            gap: 0;
+        }
+    </style>
 {% endblock %}
 
-{% block title %} {{object.title}} {% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block content %}
+<div class="grid-layout-US">
 
-        <div class="course__card"> 
-            <h3>{{ object.title }}</h3>
-            <p>{{ object.description }}</p>   
+    <div class="item1-US"> 
+        <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left" />
+
+        {% include "navbar.html" %}
+    </div>
+
+    <div class="item2-US">
+        <p id="titulo" align="center"> "nombre materia"</p>
+        <p id="subtitulo" align="center"> "#unidad"</p>
+
+
+        {% for x, y in links %}  
+
+            <div class="c">
+                <input type="checkbox" id="faq-{{forloop.counter}}">
+
+                <h1><label for="faq-{{forloop.counter}}">
+                    {{x}}
+                </label></h1>
+
+
+                <div class="p">
+                    {% for unit in units %}
+                        <p><a href= "{{ request.path }}/unit/{{forloop.counter}}/{{ y }}">Unidad {{forloop.counter}}</a> </p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="item3-US">
+        <p class="menuBotNegro">&lt; <a href="mockup2.html">Materias</a> | | <a href="mockup5.html">Ejercicios</a> | |
+            <a href="mockup6.html">Recursos</a> &gt;</p>
+        </p>
+    </div>
+
+    <div class="item0-US">
+        <div class="barra-main-I">
+            <nav class="main-menu">
+                <ul>
+                    <li class="has-subnav">
+                        <a>
+                            <i class="fa fa-list fa-2x"></i>
+                            <span class="nav-text">
+                                Favoritos/archivos pineados/como quieran, nunca les gusta lo que pongo
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
-
-        <button><a href="{{ request.get_full_path }}/materials"> materials </a></button>
-        <button><a href="{{ request.get_full_path }}/exercises"> exercises </a></button>
-        <button><a href="{{ request.get_full_path }}/resources"> resources </a></button>
+    </div>
 
 {% endblock %}

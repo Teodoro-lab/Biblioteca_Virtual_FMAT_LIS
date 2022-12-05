@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView, TemplateView
 from django.views.generic.edit import FormView
 
 from .forms import CommentForm
-from .models import Course, Material, Semester
+from .models import Course, Material, Semester, Unit, Resource
 
 
 def index_view(request):
@@ -31,12 +31,37 @@ class CommentFormView(FormView):
 
 class MaterialListView(ListView):
     model = Material
-    template_name = "material_list.html"
+    template_name = "library/material_list.html"
 
     def get_queryset(self):
-        course = Course.objects.filter(slug=self.kwargs["slug"]).first()
+        course = Course.objects.get(slug=self.kwargs["slug"])
+        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"],
+                                   course_id=course.id).first()
+        materials = Resource.objects.filter(unit_id=unit.pk, type='Exercise')
+        return materials
 
-        return Material.objects.filter(course=course.id)
+
+class ExcersiseListView(ListView):
+    model = Resource
+    template_name = "library/material_list.html"
+
+    def get_queryset(self):
+        course = Course.objects.get(slug=self.kwargs["slug"])
+        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"], course_id=course.id).first()
+        exercises = Resource.objects.filter(unit_id=unit.pk, type='Exercise')
+        return exercises
+
+
+class GenericResourceListView(ListView):
+    model = Resource
+    template_name = "library/material_list.html"
+
+    def get_queryset(self):
+        course = Course.objects.get(slug=self.kwargs["slug"])
+        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"],
+                                   course_id=course.id).first()
+        resources = Resource.objects.filter(unit_id=unit.pk, type='Generic')
+        return resources
 
 
 #-------------- Semesters -------------
@@ -64,6 +89,19 @@ class CourseListView(ListView):
 class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
+    extra_context = {'units': Unit.objects.filter}
+
+    def get_object(self):
+        course = Course.objects.get(slug=self.kwargs['slug'])
+        return course
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['units'] = Unit.objects.filter(course=self.get_object().id)
+        context['links'] = [("Materiales", "materials"),
+                            ("Ejercicios", "exercises"),
+                            ("Recursos", "resources")]
+        return context
 
 
 class MaterialDetailView(DetailView):
@@ -71,5 +109,6 @@ class MaterialDetailView(DetailView):
     template_name = "library/material_detail.html"
 
     def get_object(self):
-        material = Material.objects.filter(id=self.kwargs['material_id']).first()
+        material = Material.objects.filter(
+            id=self.kwargs['material_id']).first()
         return material
