@@ -2,24 +2,77 @@
 
 {% load static %}
 
+{% load util %}
+
 {% block title %}Biblioteca Ing. Software{% endblock %}
 
 {% block content %}
 
-
-
-{% for material in object_list %}
-    <div>
-        <h3>{{ material.title }}</h3>
-        <p>{{ material.description }}</p>
-        <p>{{ material.upload }}</p>
-
-
-        <object data="{% get_media_prefix %}{{ material.upload.name }}" type="application/pdf" width="300" height="200">
-            <embed src="{% get_media_prefix %}{{ material.upload.name }}" type="application/pdf">
-        </object>
-        <button><a href="{% get_media_prefix %}{{ material.upload.name }}">Go!</a></button>
+<div class="container">
+    <div class="buttonFavorito">
+        <div class="container">
+            <div class="buttonTextoFavorito"></div>
+        </div>
     </div>
-{% endfor %}
+</div>
+
+<div class="grid-layout-U">
+
+    <div class="item1-U">
+        <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left" />
+
+        {% include "navbar.html" %}
+    </div>
+
+    {% for material in object_list %}
+
+    <div>
+        <h3 id="titulo" align="center">{{ material.title }}</h3>
+        <p class="contenido-U">{{ material.description }}</p>
+    
+        {% if material|get_type != 'Material' %}
+            <div>
+                <object align="center" data="{% get_media_prefix %}{{ material.upload.name }}" type="application/pdf" width="300" height="200">
+                    <embed src="{% get_media_prefix %}{{ material.upload.name }}" type="application/pdf">
+                </object>
+                    <button><a href="{% get_media_prefix %}{{ material.upload.name }}">Go!</a></button>
+            </div>
+        {% endif %}
+            
+    </div>
+    {% endfor %}
+
+    <div class="item3-U">
+        <div class="grid-bottom-U">
+
+            <div class="bot1">
+                <button class="adobe-pdf-download">
+                    <table>
+                        <tr>
+                            <td><img src="{% static 'iconos\pdf1.png' %}"></td>
+                            <td>
+                                <p><a href="resources">Recursos</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </button>
+            </div>
+
+            <div class="bot2">
+                <button class="ejercicios-pdf-download">
+                    <table>
+                        <tr>
+                            <td><img src="{% static 'iconos\ejercicios1.png' %}"></td>
+                            <td>
+                                <p><a href="exercises">Ejercicios</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </button>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

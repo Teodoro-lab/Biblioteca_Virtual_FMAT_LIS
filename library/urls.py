@@ -1,5 +1,5 @@
 from django.urls import include, path
-from .views import (CourseDetailView, CourseListView, ExcersiseListView,
+from .views import (CourseDetailView, CourseListView, ExerciseListView,
                     GenericResourceListView, SemesterListView, CommentFormView,
                     MaterialListView, MaterialDetailView, ContactTemplateView,
                     index_view)
@@ -8,7 +8,7 @@ resource_patterns = [
     path("materials", MaterialListView.as_view(), name="material_list"),
     path("resources", GenericResourceListView.as_view(),
          name="resource_list"),
-    path("exercises", ExcersiseListView.as_view(), name="excercise_list"),
+    path("exercises", ExerciseListView.as_view(), name="excercise_list"),
     path("materials/<int:material_id>",
          MaterialDetailView.as_view(),
          name="material_detail"),

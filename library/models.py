@@ -44,6 +44,9 @@ class Unit(models.Model):
     description = models.TextField(default="Enjoy the unit")
     unit_num = models.DecimalField(max_digits=14, decimal_places=0)
 
+    def __str__(self):
+        return "unit " + str(self.unit_num) + " - " + self.course.name
+
 
 class Material(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
@@ -58,7 +61,7 @@ class Material(models.Model):
 class Resource(Material):
     types = [
         ('Generic', 'Generic'),
-        ('Excerise', 'Excerise'),
+        ('Exercise', 'Exercise'),
     ]
 
     upload = models.FileField(default=None)
@@ -71,3 +74,8 @@ class Resource(Material):
 class Comment(models.Model):
     email = models.EmailField()
     comment = models.TextField()
+
+    def __str__(self):
+        if len(self.comment.rsplit(r'\W+')) > 10:
+            return self.comment[:10] + "..."
+        return self.comment

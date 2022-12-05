@@ -35,20 +35,22 @@ class MaterialListView(ListView):
 
     def get_queryset(self):
         course = Course.objects.get(slug=self.kwargs["slug"])
-        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"],
-                                   course_id=course.id).first()
-        materials = Resource.objects.filter(unit_id=unit.pk, type='Exercise')
+        unit = Unit.objects.get(unit_num=self.kwargs["unit_num"],
+                                   course_id=course.id)
+        materials = Material.objects.filter(unit_id=unit.pk)
         return materials
 
 
-class ExcersiseListView(ListView):
+class ExerciseListView(ListView):
     model = Resource
     template_name = "library/material_list.html"
 
     def get_queryset(self):
         course = Course.objects.get(slug=self.kwargs["slug"])
-        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"], course_id=course.id).first()
+        unit = Unit.objects.get(unit_num=self.kwargs["unit_num"],
+                                course_id=course.id)
         exercises = Resource.objects.filter(unit_id=unit.pk, type='Exercise')
+        print(exercises)
         return exercises
 
 
@@ -58,8 +60,8 @@ class GenericResourceListView(ListView):
 
     def get_queryset(self):
         course = Course.objects.get(slug=self.kwargs["slug"])
-        unit = Unit.objects.filter(unit_num=self.kwargs["unit_num"],
-                                   course_id=course.id).first()
+        unit = Unit.objects.get(unit_num=self.kwargs["unit_num"],
+                                   course_id=course.id)
         resources = Resource.objects.filter(unit_id=unit.pk, type='Generic')
         return resources
 
@@ -89,7 +91,6 @@ class CourseListView(ListView):
 class CourseDetailView(DetailView):
     model = Course
     template_name = "library/course_detail.html"
-    extra_context = {'units': Unit.objects.filter}
 
     def get_object(self):
         course = Course.objects.get(slug=self.kwargs['slug'])
@@ -109,6 +110,6 @@ class MaterialDetailView(DetailView):
     template_name = "library/material_detail.html"
 
     def get_object(self):
-        material = Material.objects.filter(
-            id=self.kwargs['material_id']).first()
+        material = Material.objects.get(
+            id=self.kwargs['material_id'])
         return material
