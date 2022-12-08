@@ -50,3 +50,12 @@ VALUES (2, 'www.facebook.com', 'Exercise');
 -- COMMENTS
 INSERT INTO library_comment(email, comment)
 VALUES ('teodawn.td@gmail.com', 'este material es muy bueno');
+
+
+
+INSERT INTO library_material(title, description, unit_id, date_publisehd)
+VALUES ('recursion book', 'este material es un libro que explica las estructuras de datos más comunes', 1, '2020-01-01');
+
+-- PARA CREAR UN RESOURCE O EXERCISE SE DEBE CREAR UN MATERIAL Y LUEGO UN RESOURCE O EXERCISE
+INSERT INTO library_resource(material_ptr_id, upload, type)
+VALUES (6, 'https://jeffe.cs.illinois.edu/teaching/algorithms/book/01-recursion.pdf', 'Generic');

@@ -16,7 +16,7 @@ class Semester(models.Model):
                                           decimal_places=0)
 
     def __str__(self):
-        return str(self.semester_number)
+        return 'semester ' + str(self.semester_number)
 
 
 class Course(models.Model):
@@ -31,7 +31,7 @@ class Course(models.Model):
     def get_absolute_url(self):
         return reverse("course_detail",
                        kwargs={
-                           "semester_num": self.semester,
+                           "semester_num": self.semester.pk,
                            "slug": self.slug
                        })
 
@@ -48,34 +48,5 @@ class Unit(models.Model):
         return "unit " + str(self.unit_num) + " - " + self.course.name
 
 
-class Material(models.Model):
-    unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    date_publisehd = models.DateTimeField('date published')
-    title = models.CharField(max_length=120)
-    description = models.TextField()
-
-    def __str__(self):
-        return self.title
 
 
-class Resource(Material):
-    types = [
-        ('Generic', 'Generic'),
-        ('Exercise', 'Exercise'),
-    ]
-
-    upload = models.FileField(default=None)
-    type = models.CharField(max_length=10, choices=types, default='Generic')
-
-    def __str__(self):
-        return super().title
-
-
-class Comment(models.Model):
-    email = models.EmailField()
-    comment = models.TextField()
-
-    def __str__(self):
-        if len(self.comment.rsplit(r'\W+')) > 10:
-            return self.comment[:10] + "..."
-        return self.comment

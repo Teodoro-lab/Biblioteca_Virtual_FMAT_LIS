@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Semester, Career, Course, Material, Comment, Unit, Resource
+from .models import Career, Comment, Course, Material, Resource, Semester, Unit
 
 admin.site.register(Semester)
 admin.site.register(Career)
