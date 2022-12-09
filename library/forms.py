@@ -15,7 +15,6 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['email', 'comment']
 
-        # watch out that it was prefer to 
         widgets = {
             'email':
             forms.TextInput(attrs={

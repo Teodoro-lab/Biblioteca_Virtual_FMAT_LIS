@@ -9,8 +9,6 @@
         <a href="{% url 'register' %}">register</a>
     {% endif %}
 
-
-
     {% if 'materials' in request.path or 'resources' in request.path or 'exercises' in request.path %}
     <div class="dropdown">
         <button class="dropbtn">Otros
@@ -22,7 +20,16 @@
         </div>
     </div>
     {% endif %}
-
-
     <a href="{% url 'contact' %}">Contacto</a>
+
+    <div class="search-box">
+        <button class="btn-search"><i class="fa fa-search"></i></button>
+        <form action="{% url 'course_search_results' %}" method="post">
+            <label for="search-course"></label>
+            <input class="input-search" type="text" name="search-course" id="search-course" placeholder="Search a course!">
+        </form>
+    </div>
+
+
 </div>
+

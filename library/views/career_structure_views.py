@@ -12,8 +12,6 @@ class SemesterListView(ListView):
         return Semester.objects.all()
 
 
-#-------------- Courses -------------
-
 @session_visit_register
 class CourseListView(ListView):
     model = Course
@@ -21,6 +19,16 @@ class CourseListView(ListView):
 
     def get_queryset(self):
         return Course.objects.filter(semester=self.kwargs['semester_num'])
+    
+    def post(self, request, *args, **kwargs):
+        # in each post request, the queryset is updated
+        # when using the django parameter in the query djago will escape the string
+        
+        searched_course = '%' + request.POST['search-course'] + '%'
+        self.get_queryset = lambda: Course.objects.raw(
+            "SELECT * FROM library_course WHERE name LIKE %s", [searched_course]
+            )
+        return super().get(request, *args, **kwargs)
 
 
 class CourseDetailView(DetailView):
@@ -38,3 +46,4 @@ class CourseDetailView(DetailView):
                             ("Ejercicios", "exercises"),
                             ("Recursos", "resources")]
         return context
+

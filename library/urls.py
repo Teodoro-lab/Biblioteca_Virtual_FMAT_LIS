@@ -1,4 +1,5 @@
 from django.urls import include, path
+from django.views.decorators.csrf import csrf_exempt
 
 from .views import (CommentFormView, ContactTemplateView, CourseDetailView,
                     CourseListView, ExerciseListView, GenericResourceListView,
@@ -61,6 +62,9 @@ semester_patterns = [
 
 urlpatterns = [
     path("", index_view, name="home"),
+    path("courses/",
+         csrf_exempt(CourseListView.as_view()),
+         name="course_search_results"),
     path("comments/", CommentFormView.as_view(), name="comment_form"),
     path("contact/", ContactTemplateView.as_view(), name="contact"),
     path("semesters/", include(semester_patterns)),
