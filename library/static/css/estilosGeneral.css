@@ -4,25 +4,15 @@ body {
 }
 
 /*!LINKS*/
-.menuBotBlanco{ /*semestres*/
-    font-size: 20px;
-}
-
-.menuBotBlanco>a{
-    color: #FFFFFF;
-    text-decoration: none;
-}
-
-.menuBotBlanco>a:hover{
-    color: rgb(40, 224, 166);
-}
 
 .menuBotNegro{ /*materias, unidades, unidadRecursos, ejercicios*/
     font-size: 20px;
+    position: relative;
+    bottom: 0;
 }
 
 .menuBotNegro>a{
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -553,17 +543,18 @@ body {
         'sideBar main'
         'footer footer';
     gap: 10px;
-    background-color: #ffffff; /*FONDO DEL GRID*/
+    background-color: #000000; /*FONDO DEL GRID*/
     padding: 10px;
     grid-template-rows: 70px 550px  30px;
     grid-template-columns: 0;
 }
 
 .grid-layout-M > div {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     padding: 10px 10px;
     font-size: 40px;
+    color: #ffffff;
 }
 
 .grid-main-M {
@@ -575,7 +566,7 @@ body {
     justify-content: center;
     grid-template-columns: 150px 150px; /*Make the grid smaller than the container*/
     gap: 40px;
-    background-color: #ffffff; /*FONDO DEL GRID*/
+    background-color: #000000; /*FONDO DEL GRID*/
     padding: 10px;
 }
 
@@ -717,31 +708,18 @@ border: 2px;
         'sideBar main'
         'footer footer';
     gap: 10px;
-    background-color: #ffffff; /*FONDO DEL GRID*/
+    background-color: #000000; /*FONDO DEL GRID*/
     padding: 10px;
     grid-template-rows: 70px 600px  30px;
     grid-template-columns: 0;
+    color: #ffffff;
 }
 
 .grid-layout-US > div {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
     padding: 10px 10px;
     font-size: 40px;
-}
-
-.grid-main-US {
-    display: grid;
-    grid-template-areas:
-        'asignatura1 asignatura2 '
-        'asignatura3 asignatura4'
-        'asignatura5 asignatura5';
-    justify-content: center;
-    grid-template-columns: 150px 150px; /*Make the grid smaller than the container*/
-    gap: 20px;
-    column-gap: 0px;
-    background-color: #ffffff; /*FONDO DEL GRID*/
-    padding: 10px;
 }
 
 .grid-main-US > div {

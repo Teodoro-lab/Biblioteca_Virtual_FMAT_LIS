@@ -8,6 +8,11 @@ class SemesterListView(ListView):
     model = Semester
     template_name = "semester_list.html"
 
+    def setup(self, request, *args, **kwargs):
+        print(request.COOKIES)
+        return super().setup(request, *args, **kwargs)
+
+
     def get_queryset(self):
         return Semester.objects.all()
 

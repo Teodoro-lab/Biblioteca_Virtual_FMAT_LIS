@@ -13,9 +13,18 @@
 
 
 <div class="grid-layout-S">
+
+    <div class="item0-I"> 
+        <div class="barra-main-I">
+        <nav class="main-menu">
+          <ul id="listaPins">
+          </ul>
+      </nav>
+    </div>
+      </div>
     
     <div class="item1-S">
-        <img id="icono" alt="Image 1" src="{% static 'iconos/' %}tasa.jpeg" align="left" />
+        <img id="icono" alt="Image 1" src="{% static 'iconos/' %}CupWhite.png" align="left" />
         
             {% include "navbar.html" %}
         </div>
@@ -38,11 +47,8 @@
             </div>
         </div>
     
-        <div class="item3-S">
-            <p class="menuBotBlanco">&lt; <a href="Catalogo.html">Materias</a> | | <a href="Personal.html">Ejercicios</a> |
-                | <a href="Comentarios.html">Recursos</a> &gt;</p>
-            </p>
-        </div>
+       
+        
     </div>
 
 {% endblock %}

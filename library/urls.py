@@ -1,6 +1,9 @@
 from django.urls import include, path
 from django.views.decorators.csrf import csrf_exempt
 
+from library.forms import MaterialUploadForm
+from library.views.material_views import MaterialUploadFormView
+
 from .views import (CommentFormView, ContactTemplateView, CourseDetailView,
                     CourseListView, ExerciseListView, GenericResourceListView,
                     MaterialDetailView, MaterialListView, SemesterListView,
@@ -68,4 +71,5 @@ urlpatterns = [
     path("comments/", CommentFormView.as_view(), name="comment_form"),
     path("contact/", ContactTemplateView.as_view(), name="contact"),
     path("semesters/", include(semester_patterns)),
+    path("upload/", MaterialUploadFormView.as_view(), name="upload"),
 ]

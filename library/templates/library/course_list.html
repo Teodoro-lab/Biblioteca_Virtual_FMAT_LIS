@@ -18,14 +18,14 @@
     <div class="grid-layout-M">
     
         <div class="item1-M">
-            <img id="icono" alt="Image 1" src="{% static 'iconos/' %}tasa.jpeg" align="left" />
+            <img id="icono" alt="Image 1" src="{% static 'iconos/' %}CupWhite.png" align="left" />
     
             {% include "navbar.html" %}
         </div>
     
         <div class="item2-M">
             <p id="titulo" align="center"> Materias</p>
-            <p id="subtitulo" align="center"> Semestre 5</p>
+            <p id="subtitulo" align="center"> Semestre {{ course.semester.semester_number }}</p>
     
             <div class="grid-main-M">
 

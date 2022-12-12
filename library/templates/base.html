@@ -7,15 +7,22 @@
 		<link rel="stylesheet" href="{% static 'css/search-course.css' %}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+		<!-- <script language="javascript" type="module" src="{% static 'js/notify.js' %}"></script> -->
 
 		{% block cssfiles %}{% endblock %}
-		{% block jsfiles %}{% endblock %}
+		{% block jsfiles %}
+		{% endblock %}
 
 		<title>{% block title %}My amazing site{% endblock %}</title>
 	</head>
 
-	<body>
+	<body bgcolor="black">
+
 		{% block content %}
 		{% endblock %}
 	</body>
+
+	{% block jsfilesend %}
+	{% endblock %}
+	
 </html>

@@ -38,9 +38,9 @@ class Course(models.Model):
 
 class Unit(models.Model):
     name = models.CharField(max_length=120)
-    course = models.OneToOneField(Course,
+    course = models.ForeignKey(Course,
                                          on_delete=models.CASCADE,
-                                         primary_key=True)
+                                         )
     description = models.TextField(default="Enjoy the unit")
     unit_num = models.DecimalField(max_digits=14, decimal_places=0)
 

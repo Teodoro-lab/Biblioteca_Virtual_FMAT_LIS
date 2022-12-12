@@ -10,9 +10,7 @@
 {% endblock %}
 
 {% block jsfiles %}
-    <script src="https://kit.fontawesome.com/b9de68eef5.js" crossorigin="anonymous"></script> <!--verificar que este bien el formato para este js-->
-    <!--<script language="javascript" type="module" src="{% static 'js/apiDiccionario.js' %}"></script> FALTA IMPLEMNTACION DE API-->
-    <script language="javascript" type="module" src="{% static 'js/cookiesMaterialFav.js' %}"></script>
+    <script src="https://kit.fontawesome.com/b9de68eef5.js" crossorigin="anonymous"></script> 
 {% endblock %}
 
 {% block title %} {{ course.title }} {% endblock %}
@@ -31,7 +29,7 @@
         <div class="grid-layout-U">
 
             <div class="item1-U">
-              <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left"/>
+              <img id="icono" alt="Image 1" src="{% static 'iconos\CupWhite.png' %}" align="left"/>
         
               {% include "navbar.html" %}
             </div>
@@ -75,5 +73,9 @@
             </div>  
           </div>
 
+{% endblock %}
+
+{% block jsfilesend %}
+    <script language="javascript" type="module" src="{% static 'js/cookiesMaterialFav.js' %}"></script>
 {% endblock %}
 

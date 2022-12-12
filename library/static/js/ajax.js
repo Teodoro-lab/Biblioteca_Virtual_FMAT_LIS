@@ -1,3 +1,5 @@
+import { Notify } from "./notify.js";
+
 
 function request(url) {
     return new Promise((resolve, reject) => {
@@ -15,29 +17,23 @@ function request(url) {
 async function factAboutNumber(number) {
     let url = `http://numbersapi.com/${number}?json`;
     let body = await request(url);
-    
-    // añadir lógica para agregar elementos al html
-
     return body;
 }
 
-async function createFunFact(number) {
-    let funfact = document.getElementById('fun-fact');
+async function createFunFact(number, notify) {
     let numberFact = await factAboutNumber(number);
 
-    if (funfact.hasChildNodes()) {
-        funfact.removeChild(funfact.childNodes[0]);
-        funfact.appendChild(document.createTextNode(numberFact.text));
-    } else {
-        funfact.appendChild(document.createTextNode(numberFact.text));
-    }
-}
+    notify.message = numberFact.text;
+}    
 
+const notify = new Notify("Welcome to my page!");
+notify.show();
+notify.showAfter(7 * 1000);
 
 setInterval(function () {
     let number = Math.floor(Math.random() * 100);
-    createFunFact(number);
-}, 3 * 1000);
+    createFunFact(number, notify);
+}, 7 * 1000);    
 
 
 

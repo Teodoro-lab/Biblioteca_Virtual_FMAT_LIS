@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/botonFlotante.css' %}" />
+{% endblock %}
+
 {% load util %}
 
 {% block title %}Biblioteca Ing. Software{% endblock %}
@@ -19,7 +23,7 @@
 <div class="grid-layout-U">
 
     <div class="item1-U">
-        <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left" />
+        <img id="icono" alt="Image 1" src="{% static 'iconos\CupBlack.png' %}" align="left" />
 
         {% include "navbar.html" %}
     </div>
@@ -75,4 +79,8 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block jsfilesend %}
+    <script language="javascript" type="module" src="{% static 'js/cookiesMaterialFav.js' %}"></script>
 {% endblock %}

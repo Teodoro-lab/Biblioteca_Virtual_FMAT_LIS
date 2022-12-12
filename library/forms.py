@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Comment
+from .models import Comment, Resource
 
 
 class CommentForm(forms.ModelForm):
@@ -25,3 +25,19 @@ class CommentForm(forms.ModelForm):
                 'class': 'texto-formulario cuadros',
             }),
         }
+
+
+class MaterialUploadForm(forms.ModelForm):
+    """
+    Form for the Comment model related to:
+    models:
+        :model:`library.Material`.
+    view:
+        :view:`library.views.CommentFormView`.
+    """
+
+    class Meta:
+        model = Resource
+        fields = ['title', 'description', 'unit', 'upload', 'type']
+
+    

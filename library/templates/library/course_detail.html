@@ -7,12 +7,7 @@
     <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
     <link rel="stylesheet" href="{% static 'css/acordeon.css' %}" />
     <link rel="stylesheet" href="{% static 'css/search-course.css' %}">
-
     <style>
-        body {
-            background-color: white;
-        }
-    
         .item2-US {
             gap: 0;
         }
@@ -25,7 +20,7 @@
 <div class="grid-layout-US">
 
     <div class="item1-US"> 
-        <img id="icono" alt="Image 1" src="{% static 'iconos\tasa.jpeg' %}" align="left" />
+        <img id="icono" alt="Image 1" src="{% static 'iconos\CupWhite.png' %}" align="left" />
 
         {% include "navbar.html" %}
     </div>
@@ -36,46 +31,35 @@
 
 
         {% for x, y in links %}  
-
-            <div class="c">
-                <input type="checkbox" id="faq-{{forloop.counter}}">
-
-                <h1>
-                    <label for="faq-{{forloop.counter}}">
-                        {{x}}
-                    </label>
-                </h1>
-
+            <button class="accordion">{{y}}</button>
+            <div class="panel">
                 <div class="p">
                     {% for unit in units %}
-                        <p><a href= "{{ request.path }}/unit/{{forloop.counter}}/{{ y }}">Unidad {{forloop.counter}}</a> </p>
+                        <p><a href= "{{ request.path }}unit/{{forloop.counter}}/{{ y }}">Unidad {{forloop.counter}}</a> </p>
                     {% endfor %}
                 </div>
             </div>
         {% endfor %}
     </div>
 
-    <div class="item3-US">
+    <!--<div class="item3-US">
         <p class="menuBotNegro">&lt; <a href="mockup2.html">Materias</a> | | <a href="mockup5.html">Ejercicios</a> | |
             <a href="mockup6.html">Recursos</a> &gt;</p>
         </p>
-    </div>
+    </div>-->
 
-    <div class="item0-US">
+    <div class="item0-S"> 
         <div class="barra-main-I">
-            <nav class="main-menu">
-                <ul>
-                    <li class="has-subnav">
-                        <a>
-                            <i class="fa fa-list fa-2x"></i>
-                            <span class="nav-text">
-                                Favoritos/archivos pineados/como quieran, nunca les gusta lo que pongo
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="main-menu">
+          <ul id="listaPins">
+          </ul>
+      </nav>
     </div>
+      </div>
 
+{% endblock %}
+
+{% block jsfilesend %}
+    <script language="javascript" type="module" src="{% static 'js/Lista.js' %}"></script>
+    <script language="javascript" type="module" src="{% static 'js/Acordeon.js' %}"></script>
 {% endblock %}

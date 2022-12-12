@@ -5,7 +5,7 @@ from .career_structure_models import Unit
 
 class Material(models.Model):
     unit = models.ForeignKey(Unit, on_delete=models.CASCADE)
-    date_publisehd = models.DateTimeField('date published')
+    date_publisehd = models.DateTimeField('date published', auto_now_add=True, blank=True)
     title = models.CharField(max_length=120)
     description = models.TextField()
 

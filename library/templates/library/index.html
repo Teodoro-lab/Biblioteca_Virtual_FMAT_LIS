@@ -4,14 +4,13 @@
 
 
 {% block cssfiles %} 
-    <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
-    <link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/mediaQueryIndex.css' %}" />
+<link rel="stylesheet" href="{% static 'css/sideBar.css' %}" />
+<link rel="stylesheet" href="{% static 'css/mediaQueryIndex.css' %}" />
+<link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
 {% endblock %}
 
 
 {% block jsfiles %}
-    <script language="javascript" type="module" src="{% static 'js/ajax.js' %}"></script>
 {% endblock %}
 
 
@@ -22,6 +21,15 @@
 
 
 <div class="grid-layout-I">
+
+    <div class="item0-I"> 
+        <div class="barra-main-I">
+        <nav class="main-menu">
+          <ul id="listaPins">
+          </ul>
+      </nav>
+    </div>
+      </div>
     
         <div class="item1-I">
             <img id="icono" alt="Image 1" src="{% static 'iconos/microwave.png' %}" align="left" />
@@ -50,6 +58,9 @@
                 <div class="inde3">
                     <p><a href="{% url 'contact' %}" class="link-negro">Contacto</a></p>
                 </div>
+                <div class="inde4">
+                    <p><a href="{% url 'upload' %}" class="upload-link link-negro">🤙🏼Sube un material !!</a></p>
+                </div>
             </div>
 
             <div id="fun-fact"></div>
@@ -57,4 +68,9 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block jsfilesend %}
+    <script language="javascript" type="module" src="{% static 'js/Lista.js' %}"></script>
+    <script language="javascript" type="module" src="{% static 'js/ajax.js' %}"></script>
 {% endblock %}
