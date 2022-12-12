@@ -38,6 +38,6 @@ class MaterialUploadForm(forms.ModelForm):
 
     class Meta:
         model = Resource
-        fields = ['title', 'description', 'unit', 'upload', 'type']
+        fields = '__all__'
 
     

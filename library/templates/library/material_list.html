@@ -31,6 +31,10 @@
     {% for material in object_list %}
 
     <div>
+
+        <h3>Unit {{material.unit.unit_num}}</h3>
+        <h3>{{material.unit.description}}</h3>
+        <hr>
         <h3 id="titulo" align="center">{{ material.title }}</h3>
         <p class="contenido-U">{{ material.description }}</p>
     

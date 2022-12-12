@@ -23,7 +23,7 @@ body {
 .link-azul{ /*materias, semestres, unidades, unidadRecursos*/
     border-radius: 10px;
     background-color: #4FCFFF;
-    height: 30px;
+    height: 70px;
     width: 100px; /*era 150*/
     padding: 20px;
     color: rgb(0, 0, 0);
@@ -33,6 +33,7 @@ body {
     font-size: 18px; /*era 25*/
     transition-duration: 0.4s;
     cursor: pointer;
+    vertical-align: middle;
 }
 
 .link-azul:hover{
@@ -562,12 +563,13 @@ body {
     grid-template-areas:
         'materia1 materia2 '
         'materia3 materia4'
-        'materia5 materia5';
+        'materia5 materia6';
     justify-content: center;
     grid-template-columns: 150px 150px; /*Make the grid smaller than the container*/
     gap: 40px;
     background-color: #000000; /*FONDO DEL GRID*/
     padding: 10px;
+    
 }
 
 .grid-main-M > div {

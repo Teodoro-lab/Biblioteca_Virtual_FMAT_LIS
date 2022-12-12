@@ -27,7 +27,7 @@
                 <p style="text-align: center;">Muchas gracias por tu apoyo!</p>
             </div>
     
-            <form class="register_form" method="POST" action="">
+            <form class="register_form" method="POST" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
                 <input type="submit" value="Submit" class="button">

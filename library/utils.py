@@ -1,3 +1,11 @@
+from library.models.statistics import visit_statistics
+
+
+def register_statistic(request):
+    if visit_statistics.objects.filter(page=request.path).exists():
+        visit_statistics.objects.filter(page=request.path).update(number_of_visits=F('number_of_visits') + 1)
+
+
 def session_visit_register(target):
     """
     Decorator to register the number of visits to a view
@@ -22,10 +30,13 @@ def session_visit_register(target):
             current_value = request.session['visits']
             current_value[request.path] = current_value.get(request.path) + 1
             request.session['visits'] = current_value
+            register_statistic(request)
         elif not visits_info:
             request.session['visits'] = {}
+            register_statistic(request)
             request.session['visits'][request.path] = 1
         else: # there is a visits_info but not the current_path
+            register_statistic(request)
             request.session['visits'][request.path] = 1
 
         parent_setup(self, request, *args, **kwargs)
