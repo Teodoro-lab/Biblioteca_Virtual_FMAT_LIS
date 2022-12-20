@@ -26,15 +26,19 @@ def session_visit_register(target):
         visits_info = request.session.get('visits', False)
         current_path = request.path
 
+        print("current_path: ", current_path)
         if visits_info and visits_info.get(current_path, False):
             current_value = request.session['visits']
             current_value[request.path] = current_value.get(request.path) + 1
             request.session['visits'] = current_value
+            print("current_value: ", current_value)
             register_statistic(request)
         elif not visits_info:
             request.session['visits'] = {}
             register_statistic(request)
             request.session['visits'][request.path] = 1
+            print("current_value: ", request.session['visits'][request.path])
+
         else: # there is a visits_info but not the current_path
             register_statistic(request)
             request.session['visits'][request.path] = 1
