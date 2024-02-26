@@ -7,13 +7,14 @@ let url = "/static/iconos/monito-PhotoRoom_1.png";
 
 style.innerHTML = `
             .toast {
+                position: absolute;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
                 border-radius: 5px;
-                right: -10;
-                background-color: #333;
+                left: 65%;
+                background-color: #333333CC;
                 color: #fff;
                 padding: 15px;
-                width: 300px;
+                width: 400px;
                 margin: 15px;
             }
 
@@ -23,6 +24,7 @@ style.innerHTML = `
                 border-radius: 5px;
                 right: -10;
                 padding: 15px;
+                margin-bottom: 75px;
                 width: 100%;
                 transform: translateY(100%);
             }
@@ -30,8 +32,8 @@ style.innerHTML = `
             .toast_container::after {
                 content:url(${url});
                 position:absolute; /*or absolute*/
-                z-index:100000; /*a number that's more than the modal box*/
-                left: 60%;
+                z-index:-1; /*a number that's more than the modal box*/
+                left: 65%;
                 top: -200px;
                 height: 50px;
                 width: 50px;
@@ -92,7 +94,7 @@ class Notify {
         setTimeout(() => {
             this.toast_container.classList.remove("toast__show");
             this.toast_container.classList.add("toast__hide");
-        }, 3000);
+        }, 10 * 1000);
     }
 
     showAfter(time) {
