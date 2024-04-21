@@ -15,7 +15,7 @@ submitButton.addEventListener("click", function (event) {
     event.preventDefault();  
 
     if (form_coment.value === "") {
-        setFeedback("Please write a comment", "red");
+        setFeedback("Escribe un comentario por favor!", "red");
         setTimeout(function () {
             feedback.style.visibility = "hidden";
         }, seconds);
