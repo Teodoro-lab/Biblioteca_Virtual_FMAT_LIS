@@ -11,5 +11,8 @@ class CommentFormView(FormView):
     success_url = '/comments'
 
     def form_valid(self, form):
+        print(self.request.user.username)
+        print (form.instance)
+        form.instance.email = CustomUser.objects.get(username=self.request.user.username).email
         form.save()
         return super().form_valid(form)

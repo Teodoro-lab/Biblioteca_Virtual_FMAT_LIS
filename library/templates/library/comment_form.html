@@ -4,12 +4,11 @@
 
 {% block cssfiles %} 
     <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
-    <link rel="stylesheet" href="{% static 'css/coment-form.css' %}">
 {% endblock %}
 
 {% block title %}Comentarios{% endblock %}
 
-{% block content %}
+{% block content_auth %}
     <div class="grid-layout-CC">
         <div class="item1-CC">
             <img id="icono" alt="Image 1" style="width: 80px;" src="{% static 'iconos/' %}microwave.png" align="left" />
@@ -29,17 +28,12 @@
                 <p style="text-align: center;">¡Gracias por ayudarnos a mejorar!</p>
             </div>
     
-            <form method="POST" action="" class="coment-form">
+            <form method="POST" action="">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Enviar" class="button">
-                <p class="submit_feedback" ></p>
+                <input type="submit" value="Submit" class="button">
             </form>
         </div>
     </div>
-
-    {% block jsfilesend %}
-        <script language="javascript" type="module" src="{% static 'js/coment-form.js' %}"></script>
-    {% endblock %}
     
 {% endblock %}
