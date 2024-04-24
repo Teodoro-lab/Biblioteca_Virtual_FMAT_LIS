@@ -24,6 +24,13 @@ class GenericResourceListView(ListView):
         resources = Resource.objects.filter(unit_id=unit.pk, type='Generic')
         return resources
     
+    def get_context_data(self, **kwargs):
+        path = self.request.path.rstrip('/')  # Ensure no trailing slash
+        clean_path = path.rsplit('/', 1)[0]
+        context = super().get_context_data(**kwargs)
+        context['exercises'] = clean_path + '/exercises'
+        context['resources'] = clean_path + '/resources'
+        return context
 
 @session_visit_register
 class MaterialListView(GenericResourceListView):
