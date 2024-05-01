@@ -40,7 +40,8 @@ class MaterialUploadForm(forms.ModelForm):
     class Meta:
         model = Resource
         fields = '__all__'
-        def clean_upload(self):
+        
+    def clean_upload(self):
         """
         Validates the uploaded file. 
         The file should not exceed 2MB and should be either a PDF or an image (JPEG, PNG, or GIF).
