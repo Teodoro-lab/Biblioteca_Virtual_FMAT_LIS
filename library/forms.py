@@ -52,11 +52,12 @@ class MaterialUploadForm(forms.ModelForm):
         if upload:
             myFile = upload.open()
             mime = magic.from_buffer(myFile.read(2048), mime=True)
-    
+
             if upload.size > MAX_UPLOAD_SIZE:
                 self.add_error('upload', 'El archivo es demasiado grande')
             elif mime not in ACCEPTABLE_MIME_TYPES:
                 self.add_error('upload', 'El archivo no es un PDF o una imagen')
-        return cleaned_data
+
+        return upload
 
     
