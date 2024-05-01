@@ -29,7 +29,7 @@ class CommentForm(forms.ModelForm):
 
 
 class MaterialUploadForm(forms.ModelForm):
-   def clean_upload(self):
+    def clean_upload(self):
         """
         Validates the uploaded file. 
         The file should not exceed 2MB and should be either a PDF or an image (JPEG, PNG, or GIF).
