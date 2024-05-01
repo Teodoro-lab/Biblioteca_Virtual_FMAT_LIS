@@ -29,7 +29,18 @@ class CommentForm(forms.ModelForm):
 
 
 class MaterialUploadForm(forms.ModelForm):
-    def clean_upload(self):
+     """
+    Form for the Comment model related to:
+    models:
+        :model:`library.Material`.
+    view:
+        :view:`library.views.CommentFormView`.
+    """
+
+    class Meta:
+        model = Resource
+        fields = '__all__'
+        def clean_upload(self):
         """
         Validates the uploaded file. 
         The file should not exceed 2MB and should be either a PDF or an image (JPEG, PNG, or GIF).
