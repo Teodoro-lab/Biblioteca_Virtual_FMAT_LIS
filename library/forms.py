@@ -36,6 +36,8 @@ class BaseUserForm(forms.ModelForm):
             user.save()
         else:
             self.add_error(error_field, error_msg)
+
+class CommentForm(BaseUserForm, ResetMixin):
     """
     Form for the Comment model related to:
     models:
@@ -46,18 +48,22 @@ class BaseUserForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['comment']
-        labels = {
-            'comment': 'Comentario',  
-        }
+        labels = {'comment': 'Comentario'}
         widgets = {
-            'comment':
-            forms.Textarea(attrs={
-                'class': 'texto-formulario cuadros',
-            }),
+            'comment': forms.Textarea(attrs={'class': 'texto-formulario cuadros'}),
         }
+        # Map the quota field to the form field to add the error message
+        quota_mappings = {'comment_quota': 'comment'}
+        # Map the quota field to error message to display when the quota is exceeded
+        quota_error_msg = {'comment_quota': 'No tienes cuotas de comentarios disponibles'}
+
+    def clean(self):
+        cleaned_data = super().clean()
+        self.validate_quota('comment_quota')
+        return cleaned_data 
 
 
-class MaterialUploadForm(forms.ModelForm):
+class MaterialUploadForm(BaseUserForm, ResetMixin):
     """
     Form for the Comment model related to:
     models:
@@ -69,7 +75,16 @@ class MaterialUploadForm(forms.ModelForm):
     class Meta:
         model = Resource
         fields = '__all__'
+        # Map the quota field to the form field to add the error message
+        quota_mappings = {'file_quota': 'upload'}
+        # Map the quota field to the form field to add the error message
+        quota_error_msg = {'file_quota': 'No tienes puedes crear más archivos hoy'}
         
+    def clean(self):
+        cleaned_data = super().clean()
+        self.validate_quota('file_quota')
+        return cleaned_data
+
     def clean_upload(self):
         """
         Validates the uploaded file. 
@@ -88,5 +103,3 @@ class MaterialUploadForm(forms.ModelForm):
                 self.add_error('upload', 'El archivo no es un PDF o una imagen')
 
         return upload
-
-    
