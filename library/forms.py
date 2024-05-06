@@ -1,8 +1,8 @@
+import magic
 from django import forms
+from django.utils import timezone
 
 from .models import Comment, Resource
-import magic
-from django.utils import timezone
 
 MAX_UPLOAD_SIZE = 1024*1024*2
 ACCEPTABLE_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png', 'image/gif']
