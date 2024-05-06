@@ -20,11 +20,13 @@ class BaseUserForm(forms.ModelForm):
         super().__init__(*args, **kwargs)
 
     def validate_quota(self, quota_field):
+        """
+        Validates the quota field of the user. If the user has remaining quota, it decrements it by 1.
+        If the user has no remaining quota, it resets the quota if the last reset was 24 hours ago.
+        If the last reset was not 24 hours ago, it adds an error to the form field.
+        """
         user = self.request.user
         remaining_quota = getattr(user, quota_field)
-
-        error_field =  self.Meta.quota_mappings.get(quota_field)
-        error_msg = self.Meta.quota_error_msg.get(quota_field)
 
         if remaining_quota > 0:
             setattr(user, quota_field, remaining_quota - 1)
@@ -35,6 +37,8 @@ class BaseUserForm(forms.ModelForm):
             setattr(user, quota_field, remaining_quota - 1)
             user.save()
         else:
+            error_field =  self.Meta.quota_mappings.get(quota_field)
+            error_msg = self.Meta.quota_error_msg.get(quota_field)
             self.add_error(error_field, error_msg)
 
 class CommentForm(BaseUserForm, ResetMixin):
