@@ -1,7 +1,20 @@
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
+DAILY_FILE_QUOTA = 5
+DAILY_COMMENT_QUOTA = 10
 
 class CustomUser(AbstractUser):
     email = models.EmailField(max_length=254, unique=True)
+    comment_quota = models.IntegerField(default=DAILY_COMMENT_QUOTA)
+    file_quota = models.IntegerField(default=DAILY_FILE_QUOTA)
+    last_reset = models.DateTimeField(default=timezone.now)
+
+    def reset_form_quota(self):
+        breakpoint()
+        self.comment_quota = DAILY_COMMENT_QUOTA
+        self.file_quota = DAILY_FILE_QUOTA
+        self.last_reset = timezone.now()
+        self.save()
