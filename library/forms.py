@@ -59,7 +59,7 @@ class CommentForm(BaseUserForm, ResetMixin):
         # Map the quota field to the form field to add the error message
         quota_mappings = {'comment_quota': 'comment'}
         # Map the quota field to error message to display when the quota is exceeded
-        quota_error_msg = {'comment_quota': 'No tienes cuotas de comentarios disponibles'}
+        quota_error_msg = {'comment_quota': 'No puedes comentar más hoy!'}
 
     def clean(self):
         cleaned_data = super().clean()
@@ -82,7 +82,7 @@ class MaterialUploadForm(BaseUserForm, ResetMixin):
         # Map the quota field to the form field to add the error message
         quota_mappings = {'file_quota': 'upload'}
         # Map the quota field to the form field to add the error message
-        quota_error_msg = {'file_quota': 'No tienes puedes crear más archivos hoy'}
+        quota_error_msg = {'file_quota': 'No puedes crear más archivos hoy'}
         
     def clean(self):
         cleaned_data = super().clean()
