@@ -13,7 +13,6 @@ class CustomUser(AbstractUser):
     last_reset = models.DateTimeField(default=timezone.now)
 
     def reset_form_quota(self):
-        breakpoint()
         self.comment_quota = DAILY_COMMENT_QUOTA
         self.file_quota = DAILY_FILE_QUOTA
         self.last_reset = timezone.now()
