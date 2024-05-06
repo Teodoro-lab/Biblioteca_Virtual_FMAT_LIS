@@ -2,11 +2,40 @@ from django import forms
 
 from .models import Comment, Resource
 import magic
+from django.utils import timezone
 
 MAX_UPLOAD_SIZE = 1024*1024*2
 ACCEPTABLE_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png', 'image/gif']
 
-class CommentForm(forms.ModelForm):
+class ResetMixin:
+    @staticmethod
+    def last_reset_was_24_hours_ago(last_reset):
+        today_minus_24 = timezone.now() - timezone.timedelta(days=1)
+        return last_reset < today_minus_24
+
+
+class BaseUserForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request')
+        super().__init__(*args, **kwargs)
+
+    def validate_quota(self, quota_field):
+        user = self.request.user
+        remaining_quota = getattr(user, quota_field)
+
+        error_field =  self.Meta.quota_mappings.get(quota_field)
+        error_msg = self.Meta.quota_error_msg.get(quota_field)
+
+        if remaining_quota > 0:
+            setattr(user, quota_field, remaining_quota - 1)
+            user.save()
+        elif ResetMixin.last_reset_was_24_hours_ago(user.last_reset):
+            user.reset_form_quota()
+            remaining_quota = getattr(user, quota_field)
+            setattr(user, quota_field, remaining_quota - 1)
+            user.save()
+        else:
+            self.add_error(error_field, error_msg)
     """
     Form for the Comment model related to:
     models:
