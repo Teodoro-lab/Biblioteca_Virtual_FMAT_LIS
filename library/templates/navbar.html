@@ -2,8 +2,12 @@
     <a href="{% url 'home' %}">Inicio</a>
     <a href="{% url 'comment_form' %}">Comentarios</a>
 
-    {% if user.is_authenticated %}
-        <a href="{% url 'logout' %}">log-out</a>
+    {% if user.is_authenticated or request.identity_context_data.authenticated %}
+        {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">log-out</a>
+        {% else %}
+            <a href="{% url 'sign_out' %}">log-out</a>
+        {% endif %}
     {% else %}
         <a href="{% url 'login' %}">log-in</a>
         <a href="{% url 'register' %}">register</a>

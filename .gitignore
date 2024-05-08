@@ -4,4 +4,5 @@ env
 .env*
 .vscode
 **/uploads/*
-
+cert.crt
+cert.key
