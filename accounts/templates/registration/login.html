@@ -1,38 +1,44 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
+{% load static %} 
 
-{% load static %}
+{% block cssfiles %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/microsoft-login.css' %}" />    
+{% endblock %} 
 
-{% block cssfiles %} 
-    <link rel="stylesheet" href="{% static 'css/form.css' %}">
-{% endblock %}
-
-{% block title %}LOG IN{% endblock %}
+{% block title %}LOG IN{% endblock %} 
 
 {% block content %}
+    <div class="item1-CC">
+        <img
+        id="icono"
+        alt="Image 1"
+        style="width: 80px"
+        src="{% static 'iconos/' %}microwave.png"
+        align="left"
+    />
+        {% include "navbar.html" %}
+    </div>
 
-<div class="item1-CC">
-  <img id="icono" alt="Image 1" style="width: 80px;" src="{% static 'iconos/' %}microwave.png" align="left" />
+    <div class="item2-CC">
+        <p class="tittle-login">LOGIN</p>
+    </div>
 
-  {% include "navbar.html" %}
+    <form method="post">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Log In</button>
+    </form>
 
-</div>
-
-<div class="item2-CC">
-  <p class="tittle-login">LOGIN 
-  </p>
-
-</div>
-
-
-  <form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Log In</button>
-  </form> 
-
-<div>
-
-</div>
-
-
+    <div>
+        <a href="{% url 'sign_in' %}">
+            <button class="sign-in-button">
+                <object
+                    type="image/svg+xml"
+                    data="https://s3-eu-west-1.amazonaws.com/cdn-testing.web.bas.ac.uk/scratch/bas-style-kit/ms-pictogram/ms-pictogram.svg"
+                    class="x-icon"
+                ></object>
+                Sign in with Microsoft
+            </button>
+        </a>
+    </div>
 {% endblock %}

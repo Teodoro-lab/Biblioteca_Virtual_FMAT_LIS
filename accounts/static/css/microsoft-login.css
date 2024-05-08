@@ -1,0 +1,20 @@
+.sign-in-button {
+    background-color: #0078D7; /* Microsoft's brand color */
+    color: #ffffff; /* White text */
+    border: none; /* Remove default button border */
+    padding: 15px 32px; /* Vertical and horizontal padding */
+    text-align: center; /* Center the text */
+    text-decoration: none; /* Remove default button underline */
+    align-self: center;
+    display: block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer; /* Change cursor to pointer when hovering over the button */
+    border-radius: 4px; /* Slightly rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    margin: 2rem auto; /* Center the button */
+}
+
+.sign-in-button:hover {
+    background-color: #005A9E; /* Darker shade for hover effect */
+}
