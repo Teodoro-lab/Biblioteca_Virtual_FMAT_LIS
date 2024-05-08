@@ -4,6 +4,7 @@
 
 {% block cssfiles %} 
     <link rel="stylesheet" href="{% static 'css/blackPage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coment-form.css' %}">
 {% endblock %}
 
 {% block title %}Comentarios{% endblock %}
@@ -28,12 +29,17 @@
                 <p style="text-align: center;">¡Gracias por ayudarnos a mejorar!</p>
             </div>
     
-            <form method="POST" action="">
+            <form method="POST" action="" class="coment-form">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <input type="submit" value="Submit" class="button">
+                <input type="submit" value="Enviar" class="button">
+                <p class="submit_feedback" ></p>
             </form>
         </div>
     </div>
+
+    {% block jsfilesend %}
+        <script language="javascript" type="module" src="{% static 'js/coment-form.js' %}"></script>
+    {% endblock %}
     
 {% endblock %}
