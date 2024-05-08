@@ -40,8 +40,12 @@
         <div class="item2-I">
             <p class="titulo">Biblioteca <m style="color:#4FCFFF;">Virtual</m>
             </p>
-            {% if user.is_authenticated %}
-                <p>Bievenidx {{ user.username }}!</p>                
+            {% if user.is_authenticated or request.identity_context_data.authenticated%}
+                {% if request.identity_context_data.authenticated %}
+                    Bievenidx {{ request.identity_context_data.username }}!
+                {% else %}
+                    <p>Bievenidx {{ user.username }}!</p>                
+                {% endif %}
             {% endif %}
         </div>
     
