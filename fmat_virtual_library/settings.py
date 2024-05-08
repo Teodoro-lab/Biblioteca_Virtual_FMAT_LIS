@@ -13,6 +13,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from pathlib import Path
 
+from ms_identity_web.configuration import AADConfig
+from ms_identity_web import IdentityWebPython
+
+AAD_CONFIG = AADConfig.parse_json("aad.config.json")
+MS_IDENTITY_WEB = IdentityWebPython(AAD_CONFIG)
+ERROR_TEMPLATE_NAME = "auth/{}.html"
+
 from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -60,6 +67,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django_extensions",    
 ] + LOCAL_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
@@ -71,6 +79,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+MIDDLEWARE.append("ms_identity_web.django.middleware.MsalMiddleware")
+
 
 ROOT_URLCONF = "fmat_virtual_library.urls"
 
