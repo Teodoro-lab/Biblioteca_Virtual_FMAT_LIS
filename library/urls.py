@@ -64,6 +64,7 @@ semester_patterns = [
 ]
 
 urlpatterns = [
+    path("", index_view, name="index"), # This is an alias the home page so we can use it with the ms_identity_web library
     path("", index_view, name="home"),
     path("courses/",
          csrf_exempt(CourseListView.as_view()),
