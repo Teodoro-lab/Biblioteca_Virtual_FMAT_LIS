@@ -2,12 +2,8 @@
     <a href="{% url 'home' %}">Inicio</a>
     <a href="{% url 'comment_form' %}">Comentarios</a>
 
-    {% if user.is_authenticated or request.identity_context_data.authenticated %}
-        {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}">log-out</a>
-        {% else %}
-            <a href="{% url 'sign_out' %}">log-out</a>
-        {% endif %}
+    {% if user.is_authenticated %}
+        <a href="{% url 'logout' %}">log-out</a>
     {% else %}
         <a href="{% url 'login' %}">log-in</a>
         <a href="{% url 'register' %}">register</a>
@@ -27,7 +23,7 @@
     <a href="{% url 'contact' %}">Contacto</a>
 
     <div class="search-box">
-        <button class="btn-search"><i class="fa fa-search"></i></button>
+        <button class="btn-search" aria-label="Buscar"><i class="fa fa-search"></i></button>
         <form action="{% url 'course_search_results' %}" method="post">
             <label for="search-course"></label>
             <input class="input-search" type="text" name="search-course" id="search-course" placeholder="Search a course!">
