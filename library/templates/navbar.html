@@ -27,7 +27,7 @@
     <a href="{% url 'contact' %}">Contacto</a>
 
     <div class="search-box">
-        <button class="btn-search"><i class="fa fa-search"></i></button>
+        <button class="btn-search" aria-label="Buscar"><i class="fa fa-search"></i></button>
         <form action="{% url 'course_search_results' %}" method="post">
             <label for="search-course"></label>
             <input class="input-search" type="text" name="search-course" id="search-course" placeholder="Search a course!">
